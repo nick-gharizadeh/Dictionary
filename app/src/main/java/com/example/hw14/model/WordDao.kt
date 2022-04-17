@@ -7,7 +7,7 @@ import androidx.room.*
 @Dao
 interface WordDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     fun insert(word: Word?)
 
     @Update

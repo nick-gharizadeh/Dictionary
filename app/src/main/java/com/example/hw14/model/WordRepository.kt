@@ -4,12 +4,16 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 
 
-class WordRepository internal constructor(application: Application?) {
+class WordRepository(application: Application?) {
 
     private var wordDao: WordDao? = null
     private var allWords: LiveData<List<Word?>?>? = null
 
-    fun WordRepository(application: Application?) {
+    init {
+        wordRepository(application)
+    }
+
+    fun wordRepository(application: Application?) {
         val db = WordRoomDatabase.getDatabase(application!!)
         wordDao = db!!.wordDao()
         allWords = wordDao!!.getAllWords()
@@ -22,7 +26,6 @@ class WordRepository internal constructor(application: Application?) {
     fun insert(word: Word?) {
         wordDao?.insert(word)
     }
-
 
 
 }
