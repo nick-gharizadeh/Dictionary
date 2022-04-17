@@ -37,7 +37,9 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.android.material:material:<version>'
     implementation("androidx.drawerlayout:drawerlayout:1.1.1")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def fragment_version = "1.4.1"
     // Kotlin
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
