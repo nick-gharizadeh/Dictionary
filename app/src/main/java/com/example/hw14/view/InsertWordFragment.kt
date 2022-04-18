@@ -33,22 +33,25 @@ class InsertWordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.button.setOnClickListener {
-            wordViewModel.insert(Word(0,"d","d","d","d"))
-//            setError(binding.editTextTextWordTitle)
-//            setError(binding.editTextTextmeaning)
-//            setError(binding.editTextTextsynonym)
-//            setError(binding.editTextTextExample)
-//            if (validate()) {
-//                wordViewModel.insert(
-//                    Word(
-//                        0,
-//                        binding.editTextTextWordTitle.editText?.text.toString(),
-//                        binding.editTextTextmeaning.editText?.text.toString(),
-//                        binding.editTextTextExample.editText?.text.toString(),
-//                        binding.editTextTextsynonym.editText?.text.toString()
-//                    )
-//                )
-//            }
+            setError(binding.editTextTextWordTitle)
+            setError(binding.editTextTextmeaning)
+            setError(binding.editTextTextsynonym)
+            setError(binding.editTextTextExample)
+            if (validate()) {
+                wordViewModel.insert(
+                    Word(
+                        0,
+                        binding.editTextTextWordTitle.editText?.text.toString(),
+                        binding.editTextTextmeaning.editText?.text.toString(),
+                        binding.editTextTextExample.editText?.text.toString(),
+                        binding.editTextTextsynonym.editText?.text.toString()
+                    )
+                )
+                binding.editTextTextWordTitle.editText?.text?.clear()
+                binding.editTextTextmeaning.editText?.text?.clear()
+                binding.editTextTextsynonym.editText?.text?.clear()
+                binding.editTextTextExample.editText?.text?.clear()
+            }
         }
 
 
