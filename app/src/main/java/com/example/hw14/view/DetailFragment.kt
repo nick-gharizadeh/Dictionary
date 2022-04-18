@@ -11,8 +11,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.hw14.R
 import com.example.hw14.databinding.FragmentDetailBinding
-import com.example.hw14.databinding.FragmentInsertWordBinding
-import com.example.hw14.databinding.FragmentSearchWordBinding
 import com.example.hw14.viewmodel.WordViewModel
 
 

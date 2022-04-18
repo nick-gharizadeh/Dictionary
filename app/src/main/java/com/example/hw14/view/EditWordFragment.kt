@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.room.Update
 import com.example.hw14.R
-import com.example.hw14.databinding.FragmentDetailBinding
 import com.example.hw14.databinding.FragmentEditWordBinding
 import com.example.hw14.model.Word
 import com.example.hw14.viewmodel.WordViewModel
