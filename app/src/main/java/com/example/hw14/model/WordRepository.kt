@@ -1,7 +1,6 @@
 package com.example.hw14.model
 
 import android.app.Application
-import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 
 
