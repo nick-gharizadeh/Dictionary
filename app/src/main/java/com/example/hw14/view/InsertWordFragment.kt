@@ -36,6 +36,7 @@ class InsertWordFragment : Fragment() {
             setError(binding.editTextTextmeaning)
             setError(binding.editTextTextsynonym)
             setError(binding.editTextTextExample)
+            setError(binding.editTextTextURL)
             if (validate()) {
                 wordViewModel.insert(
                     Word(
@@ -43,13 +44,15 @@ class InsertWordFragment : Fragment() {
                         binding.editTextTextWordTitle.editText?.text.toString(),
                         binding.editTextTextmeaning.editText?.text.toString(),
                         binding.editTextTextExample.editText?.text.toString(),
-                        binding.editTextTextsynonym.editText?.text.toString()
+                        binding.editTextTextsynonym.editText?.text.toString(),
+                        binding.editTextTextURL.editText?.text.toString()
                     )
                 )
                 binding.editTextTextWordTitle.editText?.text?.clear()
                 binding.editTextTextmeaning.editText?.text?.clear()
                 binding.editTextTextsynonym.editText?.text?.clear()
                 binding.editTextTextExample.editText?.text?.clear()
+                binding.editTextTextURL.editText?.text?.clear()
             }
         }
 
@@ -77,6 +80,10 @@ class InsertWordFragment : Fragment() {
             return false
         }
 
+        if (binding.editTextTextURL.editText?.text.toString().isBlank()) {
+            binding.editTextTextURL.error = "please fill URL "
+            return false
+        }
 
         return true
     }
