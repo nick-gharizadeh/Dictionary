@@ -35,10 +35,11 @@ class SearchWordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val wordObserver = Observer<List<Word?>?> { account ->
-//            wordList = account
-//        }
-//        wordViewModel.allWords?.observe(viewLifecycleOwner, wordObserver)
+
+        val wordCountObserver = Observer<Int> { count ->
+            binding.textViewCount.text=count.toString()
+        }
+        wordViewModel.countLiveData?.observe(viewLifecycleOwner, wordCountObserver)
         binding.floatingActionButtonAdd.setOnClickListener {
             findNavController().navigate(R.id.action_searchWordFragment_to_insertWordFragment)
         }
@@ -47,7 +48,7 @@ class SearchWordFragment : Fragment() {
                 val word =
                     wordViewModel.findWord(binding.editTextTextWordTitle.editText?.text.toString())
                 if (word != null) {
-                    wordViewModel.selectedWord=word
+                    wordViewModel.selectedWord = word
                     findNavController().navigate(R.id.action_searchWordFragment_to_detailFragment)
                 } else {
                     MaterialAlertDialogBuilder(requireContext())
