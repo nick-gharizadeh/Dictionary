@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_detailFragment_to_searchWordFragment"
             app:destination="@id/searchWordFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_editWordFragment"
+            app:destination="@id/editWordFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchWordFragment"
@@ -29,5 +32,14 @@
         <action
             android:id="@+id/action_searchWordFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editWordFragment"
+        android:name="com.example.hw14.view.EditWordFragment"
+        android:label="fragment_edit_word"
+        tools:layout="@layout/fragment_edit_word" >
+        <action
+            android:id="@+id/action_editWordFragment_to_searchWordFragment"
+            app:destination="@id/searchWordFragment" />
     </fragment>
 </navigation>

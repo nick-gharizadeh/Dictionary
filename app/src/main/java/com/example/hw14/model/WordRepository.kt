@@ -1,6 +1,7 @@
 package com.example.hw14.model
 
 import android.app.Application
+import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 
 
@@ -33,6 +34,10 @@ class WordRepository(application: Application?) {
 
     fun deleteWord(word: String) {
         wordDao?.deleteWord(word)
+    }
+
+    fun update(word: Word?) {
+        wordDao?.updateWord(word)
     }
 
 }

@@ -42,6 +42,10 @@ class DetailFragment : Fragment() {
             findNavController().navigate(R.id.action_detailFragment_to_searchWordFragment)
         }
 
+        binding.buttonEdit.setOnClickListener {
+            findNavController().navigate(R.id.action_detailFragment_to_editWordFragment)
+        }
+
     }
 
     fun initViews() {

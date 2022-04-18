@@ -11,7 +11,7 @@ interface WordDao {
     fun insert(word: Word?)
 
     @Update
-    fun updateWords(vararg words: Word?)
+    fun updateWord(word: Word?)
 
     @Query("DELETE FROM word")
     fun deleteAll()
