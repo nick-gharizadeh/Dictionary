@@ -40,4 +40,9 @@ class WordRepository(application: Application?) {
         wordDao?.updateWord(word)
     }
 
+    fun getCount():LiveData<Int>?
+    {
+       return wordDao?.getCount()
+    }
+
 }
