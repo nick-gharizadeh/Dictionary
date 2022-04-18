@@ -39,6 +39,7 @@ class EditWordFragment : Fragment() {
             setError(binding.editTextTextmeaning)
             setError(binding.editTextTextsynonym)
             setError(binding.editTextTextExample)
+            setError(binding.editTextTextURL)
             if (validate()) {
                 val newWord =
                     Word(
@@ -46,7 +47,8 @@ class EditWordFragment : Fragment() {
                         binding.editTextTextWordTitle.editText?.text.toString(),
                         binding.editTextTextmeaning.editText?.text.toString(),
                         binding.editTextTextExample.editText?.text.toString(),
-                        binding.editTextTextsynonym.editText?.text.toString()
+                        binding.editTextTextsynonym.editText?.text.toString(),
+                        binding.editTextTextURL.editText?.text.toString()
                     )
                 wordViewModel.updateWord(newWord)
                 Toast.makeText(context, "successful ✏️✔️", Toast.LENGTH_SHORT).show()
@@ -61,6 +63,7 @@ class EditWordFragment : Fragment() {
         binding.editTextTextmeaning.editText?.append(wordViewModel.selectedWord?.meaning)
         binding.editTextTextsynonym.editText?.append(wordViewModel.selectedWord?.synonyms)
         binding.editTextTextExample.editText?.append(wordViewModel.selectedWord?.example)
+        binding.editTextTextURL.editText?.append(wordViewModel.selectedWord?.example)
     }
 
     fun validate(): Boolean {
@@ -81,6 +84,10 @@ class EditWordFragment : Fragment() {
 
         if (binding.editTextTextsynonym.editText?.text.toString().isBlank()) {
             binding.editTextTextsynonym.error = "please fill synonym "
+            return false
+        }
+        if (binding.editTextTextURL.editText?.text.toString().isBlank()) {
+            binding.editTextTextURL.error = "please fill URL "
             return false
         }
 
