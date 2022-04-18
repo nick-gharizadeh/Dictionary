@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.example.hw14.R
 import com.example.hw14.databinding.FragmentDetailBinding
@@ -32,7 +33,28 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        initViews()
 
     }
+
+    fun initViews() {
+        clearText(binding.textViewWord)
+        clearText(binding.textViewMeaning)
+        clearText(binding.textViewExample)
+        clearText(binding.textViewSynonym)
+        if (wordViewModel.selectedWord != null) {
+            binding.textViewWord.append(wordViewModel.selectedWord?.wordTitle)
+            binding.textViewMeaning.append(wordViewModel.selectedWord?.meaning)
+            binding.textViewExample.append(wordViewModel.selectedWord?.example)
+            binding.textViewSynonym.append(wordViewModel.selectedWord?.synonyms)
+        }
+    }
+
+    fun clearText(view: TextView): String {
+        val testList = view.text.split(':')
+        return testList[0] + ": "
+
+    }
+
+
 }

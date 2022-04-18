@@ -10,7 +10,11 @@ import com.example.hw14.model.WordRepository
 class WordViewModel(application: Application) : AndroidViewModel(application) {
     val Repository: WordRepository
     val allWords: LiveData<List<Word?>?>?
-
+    var selectedWord :Word?=null
+    init {
+        Repository = WordRepository(application)
+        allWords = Repository.getAllWords()
+    }
     fun insert(word: Word?) {
         Repository.insert(word)
     }
@@ -19,8 +23,4 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
         return Repository.findWord(word)
     }
 
-    init {
-        Repository = WordRepository(application)
-        allWords = Repository.getAllWords()
-    }
 }

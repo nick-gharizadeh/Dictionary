@@ -47,6 +47,7 @@ class SearchWordFragment : Fragment() {
                 val word =
                     wordViewModel.findWord(binding.editTextTextWordTitle.editText?.text.toString())
                 if (word != null) {
+                    wordViewModel.selectedWord=word
                     findNavController().navigate(R.id.action_searchWordFragment_to_detailFragment)
                 } else {
                     MaterialAlertDialogBuilder(requireContext())

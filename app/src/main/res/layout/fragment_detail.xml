@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/buttonDelete"
-        style="@style/Widget.MaterialComponents.Button."
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -83,7 +83,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:padding="10dp"
-        android:text="Meaning"
+        android:text="Meaning: "
         android:textColor="@color/black"
         android:textColorHint="#AAAAAA"
         android:textSize="20sp"
