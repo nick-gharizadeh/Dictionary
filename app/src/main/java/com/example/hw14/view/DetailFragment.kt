@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.hw14.R
 import com.example.hw14.databinding.FragmentDetailBinding
 import com.example.hw14.databinding.FragmentInsertWordBinding
@@ -34,6 +36,11 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        binding.buttonDelete.setOnClickListener {
+            wordViewModel.selectedWord?.wordTitle?.let { it1 -> wordViewModel.deleteWord(it1) }
+            Toast.makeText(context,"Word Deleted successfully",Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_detailFragment_to_searchWordFragment)
+        }
 
     }
 

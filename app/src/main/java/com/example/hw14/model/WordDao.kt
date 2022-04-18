@@ -16,6 +16,8 @@ interface WordDao {
     @Query("DELETE FROM word")
     fun deleteAll()
 
+    @Query("DELETE FROM word WHERE wordTitle=(:word)")
+    fun deleteWord(word:String)
 
     @Query("SELECT * from word ORDER BY wordTitle ASC")
     fun getAllWords(): LiveData<List<Word?>?>?

@@ -31,5 +31,8 @@ class WordRepository(application: Application?) {
         return wordDao?.findWord(word)
     }
 
+    fun deleteWord(word: String) {
+        wordDao?.deleteWord(word)
+    }
 
 }

@@ -23,4 +23,8 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
         return Repository.findWord(word)
     }
 
+    fun deleteWord(word: String) {
+        Repository.deleteWord(word)
+    }
+
 }

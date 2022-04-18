@@ -13,7 +13,11 @@
         android:id="@+id/detailFragment"
         android:name="com.example.hw14.view.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_searchWordFragment"
+            app:destination="@id/searchWordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchWordFragment"
         android:name="com.example.hw14.view.SearchWordFragment"
