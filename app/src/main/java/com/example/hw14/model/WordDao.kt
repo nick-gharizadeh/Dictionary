@@ -25,6 +25,8 @@ interface WordDao {
     @Query("SELECT * FROM word WHERE wordTitle=(:word) LIMIT 1")
     fun findWord(word: String?): Word?
 
+    @Query("SELECT COUNT(*) from word")
+    fun getCount():LiveData<Int>?
 
 
 }
