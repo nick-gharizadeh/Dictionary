@@ -63,7 +63,7 @@ class EditWordFragment : Fragment() {
         binding.editTextTextmeaning.editText?.append(wordViewModel.selectedWord?.meaning)
         binding.editTextTextsynonym.editText?.append(wordViewModel.selectedWord?.synonyms)
         binding.editTextTextExample.editText?.append(wordViewModel.selectedWord?.example)
-        binding.editTextTextURL.editText?.append(wordViewModel.selectedWord?.example)
+        binding.editTextTextURL.editText?.append(wordViewModel.selectedWord?.URL)
     }
 
     fun validate(): Boolean {
