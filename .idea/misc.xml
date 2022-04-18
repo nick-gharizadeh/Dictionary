@@ -4,8 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Andoid-Apps/HW14/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Andoid-Apps/HW14/app/src/main/res/layout/fragment_detail.xml" value="0.20416666666666666" />
         <entry key="..\:/Andoid-Apps/HW14/app/src/main/res/layout/fragment_insert_word.xml" value="0.20416666666666666" />
-        <entry key="..\:/Andoid-Apps/HW14/app/src/main/res/layout/fragment_search_word.xml" value="0.20416666666666666" />
+        <entry key="..\:/Andoid-Apps/HW14/app/src/main/res/layout/fragment_search_word.xml" value="0.18" />
       </map>
     </option>
   </component>

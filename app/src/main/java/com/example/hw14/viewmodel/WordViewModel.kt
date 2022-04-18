@@ -15,6 +15,10 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
         Repository.insert(word)
     }
 
+    fun findWord(word: String): Word? {
+        return Repository.findWord(word)
+    }
+
     init {
         Repository = WordRepository(application)
         allWords = Repository.getAllWords()

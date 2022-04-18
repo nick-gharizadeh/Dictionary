@@ -27,5 +27,9 @@ class WordRepository(application: Application?) {
         wordDao?.insert(word)
     }
 
+    fun findWord(word: String): Word? {
+        return wordDao?.findWord(word)
+    }
+
 
 }

@@ -20,8 +20,8 @@ interface WordDao {
     @Query("SELECT * from word ORDER BY wordTitle ASC")
     fun getAllWords(): LiveData<List<Word?>?>?
 
-    @Query("SELECT * FROM word WHERE wordTitle LIKE :word ")
-    fun findWord(word: String?): List<Word?>?
+    @Query("SELECT * FROM word WHERE wordTitle=(:word) LIMIT 1")
+    fun findWord(word: String?): Word?
 
 
 
