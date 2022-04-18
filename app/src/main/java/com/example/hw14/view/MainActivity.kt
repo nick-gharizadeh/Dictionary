@@ -11,15 +11,14 @@ import com.example.hw14.viewmodel.WordViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    val mainViewModel: WordViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         supportActionBar?.hide()
-        binding.imageViewsplash.alpha=0f
-        binding.imageViewsplash.animate().setDuration(3000).alpha(1f).withEndAction{
+        binding.group.alpha=0f
+        binding.group.animate().setDuration(3000).alpha(1f).withEndAction{
            binding.group.visibility=View.GONE
             supportActionBar?.show()
             binding.constaint.setBackgroundColor(Color.TRANSPARENT)
