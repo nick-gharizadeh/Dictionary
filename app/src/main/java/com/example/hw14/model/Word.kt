@@ -11,4 +11,5 @@ data class Word(
     @ColumnInfo val meaning: String,
     @ColumnInfo val example: String,
     @ColumnInfo val synonyms: String,
+    @ColumnInfo val URL: String
 )
