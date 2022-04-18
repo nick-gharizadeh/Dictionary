@@ -51,11 +51,13 @@ class DetailFragment : Fragment() {
         clearText(binding.textViewMeaning)
         clearText(binding.textViewExample)
         clearText(binding.textViewSynonym)
+        clearText(binding.textViewURL)
         if (wordViewModel.selectedWord != null) {
             binding.textViewWord.append(wordViewModel.selectedWord?.wordTitle)
             binding.textViewMeaning.append(wordViewModel.selectedWord?.meaning)
             binding.textViewExample.append(wordViewModel.selectedWord?.example)
             binding.textViewSynonym.append(wordViewModel.selectedWord?.synonyms)
+            binding.textViewURL.append(wordViewModel.selectedWord?.URL)
         }
     }
 
