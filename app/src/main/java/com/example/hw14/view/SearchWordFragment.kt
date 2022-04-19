@@ -19,7 +19,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class SearchWordFragment : Fragment() {
     private lateinit var binding: FragmentSearchWordBinding
     val wordViewModel: WordViewModel by activityViewModels()
-    lateinit var wordList: List<Word?>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
