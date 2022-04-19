@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_detailFragment_to_editWordFragment"
             app:destination="@id/editWordFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchWordFragment"
@@ -42,4 +45,9 @@
             android:id="@+id/action_editWordFragment_to_searchWordFragment"
             app:destination="@id/searchWordFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.example.hw14.view.WebViewFragment"
+        android:label="fragment_web_view"
+        tools:layout="@layout/fragment_web_view" />
 </navigation>

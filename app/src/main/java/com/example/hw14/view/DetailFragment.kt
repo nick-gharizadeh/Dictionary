@@ -34,6 +34,9 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        binding.textViewURL.setOnClickListener {
+            findNavController().navigate(R.id.action_detailFragment_to_webViewFragment)
+        }
         binding.buttonDelete.setOnClickListener {
             wordViewModel.selectedWord?.wordTitle?.let { it1 -> wordViewModel.deleteWord(it1) }
             Toast.makeText(context,"Word Deleted successfully",Toast.LENGTH_SHORT).show()
