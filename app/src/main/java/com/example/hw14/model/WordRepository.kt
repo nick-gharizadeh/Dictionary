@@ -44,4 +44,9 @@ class WordRepository(application: Application?) {
        return wordDao?.getCount()
     }
 
+    fun getAllFav():List<Word>?
+    {
+        return wordDao?.getAllFav()
+    }
+
 }

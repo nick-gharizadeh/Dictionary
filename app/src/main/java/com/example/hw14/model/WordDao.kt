@@ -28,5 +28,6 @@ interface WordDao {
     @Query("SELECT COUNT(*) from word")
     fun getCount():LiveData<Int>?
 
-
+    @Query("SELECT * from word where isFav='true'")
+    fun getAllFav():List<Word>
 }
