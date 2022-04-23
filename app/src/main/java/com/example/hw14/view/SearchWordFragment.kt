@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.hw14.R
+import com.example.hw14.adaptor.WordAdaptor
 import com.example.hw14.databinding.FragmentSearchWordBinding
 import com.example.hw14.model.Word
 import com.example.hw14.viewmodel.WordViewModel
@@ -24,17 +26,25 @@ class SearchWordFragment : Fragment() {
 
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSearchWordBinding.inflate(layoutInflater)
+        binding = FragmentSearchWordBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        wordViewModel.allWords?.observe(viewLifecycleOwner){
+            if ( it != null){
+                val adapter = WordAdaptor()
+                binding.recyclerview.adapter = adapter
+                adapter.submitList(it)
+            }
+        }
         val wordCountObserver = Observer<Int> { count ->
             binding.textViewCount.text=count.toString()
         }
@@ -70,4 +80,6 @@ class SearchWordFragment : Fragment() {
         }
         return true
     }
+
+
 }
