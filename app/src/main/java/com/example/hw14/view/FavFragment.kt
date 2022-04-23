@@ -37,7 +37,7 @@ class FavFragment : Fragment() {
             if (it != null) {
                 val adapter = FavWordAdaptor() {
                     wordViewModel.selectedWord = it
-                    findNavController().navigate(R.id.action_favFragment_to_editWordFragment)
+                    findNavController().navigate(R.id.action_favFragment_to_detailFragment)
                 }
                 binding.recyclerviewFav.adapter = adapter
                 adapter.submitList(it)

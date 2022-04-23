@@ -41,7 +41,6 @@ class WebViewFragment : Fragment() {
         binding.webView.apply {
             wordViewModel.selectedWord?.let { loadUrl(it.URL) }
             settings.javaScriptEnabled=true
-            settings.safeBrowsingEnabled=true
         }
     }
 }
