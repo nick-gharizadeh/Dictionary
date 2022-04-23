@@ -12,11 +12,12 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
     val allWords: LiveData<List<Word?>?>?
     var countLiveData: LiveData<Int>?
     var selectedWord: Word? = null
-
+    val allFavWords: LiveData<List<Word?>?>?
 
     init {
         Repository = WordRepository(application)
         allWords = Repository.getAllWords()
+        allFavWords = Repository.getAllFav()
         countLiveData = Repository.getCount()
     }
 
