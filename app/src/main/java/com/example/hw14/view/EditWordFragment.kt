@@ -65,6 +65,8 @@ class EditWordFragment : Fragment() {
         binding.editTextTextsynonym.editText?.append(wordViewModel.selectedWord?.synonyms)
         binding.editTextTextExample.editText?.append(wordViewModel.selectedWord?.example)
         binding.editTextTextURL.editText?.append(wordViewModel.selectedWord?.URL)
+        binding.checkBoxFav.isChecked= wordViewModel.selectedWord?.isFav == true
+
     }
 
     fun validate(): Boolean {
