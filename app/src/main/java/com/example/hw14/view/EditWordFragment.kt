@@ -48,7 +48,8 @@ class EditWordFragment : Fragment() {
                         binding.editTextTextmeaning.editText?.text.toString(),
                         binding.editTextTextExample.editText?.text.toString(),
                         binding.editTextTextsynonym.editText?.text.toString(),
-                        binding.editTextTextURL.editText?.text.toString()
+                        binding.editTextTextURL.editText?.text.toString(),
+                        binding.checkBoxFav.isChecked
                     )
                 wordViewModel.updateWord(newWord)
                 Toast.makeText(context, "successful ✏️✔️", Toast.LENGTH_SHORT).show()
