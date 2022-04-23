@@ -38,10 +38,10 @@ class SearchWordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        wordViewModel.allWords?.observe(viewLifecycleOwner){
-            if ( it != null){
+        wordViewModel.allWords?.observe(viewLifecycleOwner) {
+            if (it != null) {
                 val adapter = WordAdaptor() {
-                    wordViewModel.selectedWord=it
+                    wordViewModel.selectedWord = it
                     findNavController().navigate(R.id.action_searchWordFragment_to_detailFragment)
                 }
                 binding.recyclerview.adapter = adapter
@@ -49,13 +49,15 @@ class SearchWordFragment : Fragment() {
             }
         }
         val wordCountObserver = Observer<Int> { count ->
-            binding.textViewCount.text=count.toString()
+            binding.textViewCount.text = count.toString()
         }
         wordViewModel.countLiveData?.observe(viewLifecycleOwner, wordCountObserver)
         binding.floatingActionButtonAdd.setOnClickListener {
             findNavController().navigate(R.id.action_searchWordFragment_to_insertWordFragment)
         }
-
+        binding.buttonfav.setOnClickListener {
+            findNavController().navigate(R.id.action_searchWordFragment_to_insertWordFragment)
+        }
         binding.buttonSearch.setOnClickListener {
             if (validate()) {
                 val word =
