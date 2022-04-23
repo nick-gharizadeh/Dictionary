@@ -57,5 +57,9 @@
         android:id="@+id/favFragment"
         android:name="com.example.hw14.view.FavFragment"
         android:label="fragment_fav"
-        tools:layout="@layout/fragment_fav" />
+        tools:layout="@layout/fragment_fav" >
+        <action
+            android:id="@+id/action_favFragment_to_editWordFragment"
+            app:destination="@id/editWordFragment" />
+    </fragment>
 </navigation>
