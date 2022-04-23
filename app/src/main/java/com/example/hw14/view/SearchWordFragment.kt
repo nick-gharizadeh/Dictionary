@@ -56,7 +56,7 @@ class SearchWordFragment : Fragment() {
             findNavController().navigate(R.id.action_searchWordFragment_to_insertWordFragment)
         }
         binding.buttonfav.setOnClickListener {
-            findNavController().navigate(R.id.action_searchWordFragment_to_insertWordFragment)
+            findNavController().navigate(R.id.action_searchWordFragment_to_favFragment)
         }
         binding.buttonSearch.setOnClickListener {
             if (validate()) {
