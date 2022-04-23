@@ -40,7 +40,10 @@ class SearchWordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         wordViewModel.allWords?.observe(viewLifecycleOwner){
             if ( it != null){
-                val adapter = WordAdaptor()
+                val adapter = WordAdaptor() {
+                    wordViewModel.selectedWord=it
+                    findNavController().navigate(R.id.action_searchWordFragment_to_detailFragment)
+                }
                 binding.recyclerview.adapter = adapter
                 adapter.submitList(it)
             }

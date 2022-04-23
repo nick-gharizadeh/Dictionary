@@ -10,7 +10,9 @@ import com.example.hw14.R
 import com.example.hw14.databinding.ItemBinding
 import com.example.hw14.model.Word
 
-class WordAdaptor : ListAdapter<Word,WordAdaptor.ItemHolder>(QuestionDiffCallback) {
+typealias ClickHandler = (Word) -> Unit
+
+class WordAdaptor(private var clickHandler: ClickHandler) : ListAdapter<Word,WordAdaptor.ItemHolder>(QuestionDiffCallback) {
 
     class ItemHolder(val binding: ItemBinding):RecyclerView.ViewHolder(binding.root)
 
@@ -38,5 +40,11 @@ class WordAdaptor : ListAdapter<Word,WordAdaptor.ItemHolder>(QuestionDiffCallbac
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         holder.binding.word = getItem(position)
+        holder.binding.textViewWorditem.setOnClickListener {
+            clickHandler.invoke(getItem(position))
+        }
+        holder.binding.textViewmeaningItem.setOnClickListener {
+            clickHandler.invoke(getItem(position))
+        }
     }
 }
