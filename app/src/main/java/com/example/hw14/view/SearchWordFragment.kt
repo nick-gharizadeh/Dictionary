@@ -55,6 +55,7 @@ class SearchWordFragment : Fragment() {
         binding.floatingActionButtonAdd.setOnClickListener {
             findNavController().navigate(R.id.action_searchWordFragment_to_insertWordFragment)
         }
+
         binding.buttonSearch.setOnClickListener {
             if (validate()) {
                 val word =
