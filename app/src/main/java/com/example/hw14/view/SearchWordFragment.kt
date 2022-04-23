@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.hw14.R
+import com.example.hw14.adaptor.FavWordAdaptor
 import com.example.hw14.adaptor.WordAdaptor
 import com.example.hw14.databinding.FragmentSearchWordBinding
 import com.example.hw14.model.Word
@@ -48,6 +49,11 @@ class SearchWordFragment : Fragment() {
                 adapter.submitList(it)
             }
         }
+
+        binding.buttonfav.setOnClickListener {
+          findNavController().navigate(R.id.action_searchWordFragment_to_favFragment)
+        }
+
         val wordCountObserver = Observer<Int> { count ->
             binding.textViewCount.text = count.toString()
         }
@@ -55,9 +61,7 @@ class SearchWordFragment : Fragment() {
         binding.floatingActionButtonAdd.setOnClickListener {
             findNavController().navigate(R.id.action_searchWordFragment_to_insertWordFragment)
         }
-        binding.buttonfav.setOnClickListener {
-            findNavController().navigate(R.id.action_searchWordFragment_to_favFragment)
-        }
+
         binding.buttonSearch.setOnClickListener {
             if (validate()) {
                 val word =

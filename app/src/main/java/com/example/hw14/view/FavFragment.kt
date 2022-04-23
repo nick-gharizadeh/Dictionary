@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.hw14.R
+import com.example.hw14.adaptor.FavWordAdaptor
 import com.example.hw14.databinding.FragmentFavBinding
 import com.example.hw14.databinding.FragmentInsertWordBinding
 import com.example.hw14.databinding.FragmentSearchWordBinding
@@ -31,6 +33,15 @@ class FavFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        wordViewModel.allFavWords?.observe(viewLifecycleOwner) {
+            if (it != null) {
+                val adapter = FavWordAdaptor() {
+                    wordViewModel.selectedWord = it
+                    findNavController().navigate(R.id.action_searchWordFragment_to_detailFragment)
+                }
+                binding.recyclerviewFav.adapter = adapter
+                adapter.submitList(it)
+            }
+        }
     }
 }

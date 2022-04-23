@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw14.R
-import com.example.hw14.databinding.ItemBinding
 import com.example.hw14.databinding.ItemfavBinding
 import com.example.hw14.model.Word
 
