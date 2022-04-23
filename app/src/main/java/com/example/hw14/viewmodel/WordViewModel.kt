@@ -10,7 +10,7 @@ import com.example.hw14.model.WordRepository
 class WordViewModel(application: Application) : AndroidViewModel(application) {
     val Repository: WordRepository
     val allWords: LiveData<List<Word?>?>?
-    var countLiveData:LiveData<Int>?
+    var countLiveData: LiveData<Int>?
     var selectedWord: Word? = null
 
 
