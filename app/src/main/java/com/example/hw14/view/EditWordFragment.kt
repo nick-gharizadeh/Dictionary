@@ -48,7 +48,8 @@ class EditWordFragment : Fragment() {
                         binding.editTextTextmeaning.editText?.text.toString(),
                         binding.editTextTextExample.editText?.text.toString(),
                         binding.editTextTextsynonym.editText?.text.toString(),
-                        binding.editTextTextURL.editText?.text.toString()
+                        binding.editTextTextURL.editText?.text.toString(),
+                        binding.checkBoxFav.isChecked
                     )
                 wordViewModel.updateWord(newWord)
                 Toast.makeText(context, "successful ✏️✔️", Toast.LENGTH_SHORT).show()
@@ -64,6 +65,8 @@ class EditWordFragment : Fragment() {
         binding.editTextTextsynonym.editText?.append(wordViewModel.selectedWord?.synonyms)
         binding.editTextTextExample.editText?.append(wordViewModel.selectedWord?.example)
         binding.editTextTextURL.editText?.append(wordViewModel.selectedWord?.URL)
+        binding.checkBoxFav.isChecked= wordViewModel.selectedWord?.isFav == true
+
     }
 
     fun validate(): Boolean {

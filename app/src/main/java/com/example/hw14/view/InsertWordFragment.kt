@@ -45,7 +45,8 @@ class InsertWordFragment : Fragment() {
                         binding.editTextTextmeaning.editText?.text.toString(),
                         binding.editTextTextExample.editText?.text.toString(),
                         binding.editTextTextsynonym.editText?.text.toString(),
-                        binding.editTextTextURL.editText?.text.toString()
+                        binding.editTextTextURL.editText?.text.toString(),
+                        binding.checkBoxfav.isChecked
                     )
                 )
                 binding.editTextTextWordTitle.editText?.text?.clear()
@@ -84,6 +85,7 @@ class InsertWordFragment : Fragment() {
             binding.editTextTextURL.error = "please fill URL "
             return false
         }
+
 
         return true
     }

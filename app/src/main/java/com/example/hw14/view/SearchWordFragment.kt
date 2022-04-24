@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.hw14.R
+import com.example.hw14.adaptor.FavWordAdaptor
 import com.example.hw14.adaptor.WordAdaptor
 import com.example.hw14.databinding.FragmentSearchWordBinding
 import com.example.hw14.model.Word
@@ -38,23 +39,29 @@ class SearchWordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        wordViewModel.allWords?.observe(viewLifecycleOwner){
-            if ( it != null){
+        wordViewModel.allWords?.observe(viewLifecycleOwner) {
+            if (it != null) {
                 val adapter = WordAdaptor() {
-                    wordViewModel.selectedWord=it
+                    wordViewModel.selectedWord = it
                     findNavController().navigate(R.id.action_searchWordFragment_to_detailFragment)
                 }
                 binding.recyclerview.adapter = adapter
                 adapter.submitList(it)
             }
         }
+
+        binding.buttonfav.setOnClickListener {
+          findNavController().navigate(R.id.action_searchWordFragment_to_favFragment)
+        }
+
         val wordCountObserver = Observer<Int> { count ->
-            binding.textViewCount.text=count.toString()
+            binding.textViewCount.text = count.toString()
         }
         wordViewModel.countLiveData?.observe(viewLifecycleOwner, wordCountObserver)
         binding.floatingActionButtonAdd.setOnClickListener {
             findNavController().navigate(R.id.action_searchWordFragment_to_insertWordFragment)
         }
+
         binding.buttonSearch.setOnClickListener {
             if (validate()) {
                 val word =
