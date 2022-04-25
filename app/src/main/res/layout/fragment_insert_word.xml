@@ -7,7 +7,7 @@
     tools:context=".view.InsertWordFragment">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonInsert"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
         app:cornerRadius="10dp"
         app:icon="@drawable/ic_baseline_record_voice_over_24"
         app:iconGravity="textStart"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/buttonInsert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
