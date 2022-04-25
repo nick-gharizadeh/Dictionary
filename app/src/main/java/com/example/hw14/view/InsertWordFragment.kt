@@ -1,23 +1,54 @@
 package com.example.hw14.view
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.media.MediaPlayer
+import android.media.MediaRecorder
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.PackageManagerCompat.LOG_TAG
 import androidx.fragment.app.activityViewModels
 import com.example.hw14.databinding.FragmentInsertWordBinding
 import com.example.hw14.model.Word
 import com.example.hw14.viewmodel.WordViewModel
 import com.google.android.material.textfield.TextInputLayout
+import java.io.IOException
+
+private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
 
 
 class InsertWordFragment : Fragment() {
+    var countRecordState = 0
+    private var recorder: MediaRecorder? = null
+    private var fileName: String = ""
+    private var player: MediaPlayer? = null
+    private var permissionToRecordAccepted = false
+    private var permissions: Array<String> = arrayOf(Manifest.permission.RECORD_AUDIO)
     private lateinit var binding: FragmentInsertWordBinding
     val wordViewModel: WordViewModel by activityViewModels()
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        permissionToRecordAccepted = if (requestCode == REQUEST_RECORD_AUDIO_PERMISSION) {
+            grantResults[0] == PackageManager.PERMISSION_GRANTED
+        } else {
+            false
+        }
+        if (!permissionToRecordAccepted)
+            requireActivity().finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -25,13 +56,36 @@ class InsertWordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentInsertWordBinding.inflate(layoutInflater)
+        ActivityCompat.requestPermissions(requireActivity(), permissions, REQUEST_RECORD_AUDIO_PERMISSION)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.button.setOnClickListener {
+        binding.buttonRecordVoice.setOnClickListener {
+            if(validate()) {
+                if (countRecordState == 0) {
+                    binding.editTextTextWordTitle.isEnabled=false
+                    val filename = binding.editTextTextWordTitle.editText?.text.toString()
+                    fileName = "${activity?.externalCacheDir?.absolutePath}/$filename.3gp"
+                }
+                if (countRecordState % 2 == 0) {
+                    startRecording()
+                    Toast.makeText(
+                        context,
+                        "please stop recording after your work is finish",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    binding.buttonRecordVoice.text = "Stop Record Voice"
+                } else {
+                    stopRecording()
+                    binding.buttonRecordVoice.text = "Record Voice"
+                }
+                countRecordState++
+            }
+        }
+        binding.buttonInsert.setOnClickListener {
             setError(binding.editTextTextWordTitle)
             setError(binding.editTextTextmeaning)
             setError(binding.editTextTextsynonym)
@@ -49,6 +103,7 @@ class InsertWordFragment : Fragment() {
                         binding.checkBoxfav.isChecked
                     )
                 )
+
                 binding.editTextTextWordTitle.editText?.text?.clear()
                 binding.editTextTextmeaning.editText?.text?.clear()
                 binding.editTextTextsynonym.editText?.text?.clear()
@@ -59,6 +114,7 @@ class InsertWordFragment : Fragment() {
 
 
     }
+
 
     fun validate(): Boolean {
         if (binding.editTextTextWordTitle.editText?.text.isNullOrBlank()) {
@@ -91,7 +147,32 @@ class InsertWordFragment : Fragment() {
     }
 
     fun setError(view: TextInputLayout) {
-        view.error =null
+        view.error = null
+    }
+
+    private fun startRecording() {
+        recorder = MediaRecorder().apply {
+            setAudioSource(MediaRecorder.AudioSource.MIC)
+            setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
+            setOutputFile(fileName)
+            setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+
+            try {
+                prepare()
+            } catch (e: IOException) {
+                Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
+            }
+
+            start()
+        }
+    }
+
+    private fun stopRecording() {
+        recorder?.apply {
+            stop()
+            release()
+        }
+        recorder = null
     }
 
 }
