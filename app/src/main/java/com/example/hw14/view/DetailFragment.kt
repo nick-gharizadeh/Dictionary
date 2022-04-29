@@ -42,6 +42,9 @@ class DetailFragment : Fragment() {
         initViews()
         val filename =wordViewModel.selectedWord?.wordTitle
         fileName = "${activity?.externalCacheDir?.absolutePath}/$filename.3gp"
+        if (player == null)
+        { binding.buttonPlayVoice.visibility=View.GONE
+        }
         binding.buttonPlayVoice.setOnClickListener {
             if (countPlayState%2==0)
             { startPlaying()
@@ -96,9 +99,10 @@ class DetailFragment : Fragment() {
                 prepare()
                 start()
             } catch (e: IOException) {
-                Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "You don't record voice for this word", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 
     private fun stopPlaying() {
