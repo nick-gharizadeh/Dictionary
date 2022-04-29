@@ -1,6 +1,8 @@
 package com.example.hw14.view
 
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +14,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.hw14.R
 import com.example.hw14.databinding.FragmentDetailBinding
 import com.example.hw14.viewmodel.WordViewModel
+import java.io.IOException
 
 
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
+    var countPlayState = 0
+    private var player: MediaPlayer? = null
+    private var fileName: String = ""
     val wordViewModel: WordViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +40,19 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        val filename =wordViewModel.selectedWord?.wordTitle
+        fileName = "${activity?.externalCacheDir?.absolutePath}/$filename.3gp"
+        binding.buttonPlayVoice.setOnClickListener {
+            if (countPlayState%2==0)
+            { startPlaying()
+                binding.buttonPlayVoice.text="Stop Playing"
+            }
+            else {
+                stopPlaying()
+                binding.buttonPlayVoice.text="Play Voice"
+            }
+            countPlayState++
+        }
         binding.textViewURL.setOnClickListener {
             findNavController().navigate(R.id.action_detailFragment_to_webViewFragment)
         }
@@ -70,5 +89,26 @@ class DetailFragment : Fragment() {
 
     }
 
+    private fun startPlaying() {
+        player = MediaPlayer().apply {
+            try {
+                setDataSource(fileName)
+                prepare()
+                start()
+            } catch (e: IOException) {
+                Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
+    private fun stopPlaying() {
+        player?.release()
+        player = null
+    }
+
+    override fun onStop() {
+        super.onStop()
+        player?.release()
+        player = null
+    }
 }

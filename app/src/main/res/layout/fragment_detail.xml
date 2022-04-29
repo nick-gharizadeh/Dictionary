@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".view.DetailFragment" >
 
+    <Button
+        android:id="@+id/buttonPlayVoice"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/myBlue"
+        android:text="Play Voice"
+        app:icon="@drawable/ic_baseline_play_arrow_24"
+        app:iconGravity="textStart"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDelete"
+        app:layout_constraintEnd_toEndOf="@+id/buttonDelete"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonDelete" />
+
     <TextView
         android:id="@+id/textViewURL"
         android:layout_width="0dp"
