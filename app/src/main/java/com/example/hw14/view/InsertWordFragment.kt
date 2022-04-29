@@ -5,20 +5,22 @@ import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import androidx.core.content.PackageManagerCompat.LOG_TAG
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.hw14.databinding.FragmentInsertWordBinding
 import com.example.hw14.model.Word
 import com.example.hw14.viewmodel.WordViewModel
 import com.google.android.material.textfield.TextInputLayout
 import java.io.IOException
+
 
 private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
 
@@ -62,7 +64,6 @@ class InsertWordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.buttonRecordVoice.setOnClickListener {
             if(validate()) {
                 if (countRecordState == 0) {
@@ -121,7 +122,6 @@ class InsertWordFragment : Fragment() {
             binding.editTextTextWordTitle.error = "please fill word  "
             return false
         }
-
         if (binding.editTextTextmeaning.editText?.text.toString().isBlank()) {
             binding.editTextTextmeaning.error = "please fill meaning  "
             return false
@@ -138,10 +138,16 @@ class InsertWordFragment : Fragment() {
         }
 
         if (binding.editTextTextURL.editText?.text.toString().isBlank()) {
-            binding.editTextTextURL.error = "please fill URL "
+            val word = binding.editTextTextWordTitle.editText?.text.toString().trim()
+            binding.editTextTextURL.editText?.setText("https://en.wikipedia.org/wiki/$word")
             return false
         }
 
+        // validate URL
+        if (!Patterns.WEB_URL.matcher(binding.editTextTextURL.editText?.text.toString()).matches()) {
+            binding.editTextTextURL.error = "please fill this field with a valid URL "
+            return false
+        }
 
         return true
     }
