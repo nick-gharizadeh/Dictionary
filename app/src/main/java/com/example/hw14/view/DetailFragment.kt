@@ -42,9 +42,6 @@ class DetailFragment : Fragment() {
         initViews()
         val filename =wordViewModel.selectedWord?.wordTitle
         fileName = "${activity?.externalCacheDir?.absolutePath}/$filename.3gp"
-        if (player == null)
-        { binding.buttonPlayVoice.visibility=View.GONE
-        }
         binding.buttonPlayVoice.setOnClickListener {
             if (countPlayState%2==0)
             { startPlaying()
