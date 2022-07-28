@@ -8,49 +8,44 @@
             name="word"
             type="com.example.hw14.model.Word" />
     </data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
 
-        <TextView
-            android:id="@+id/textViewWorditem"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{word.wordTitle}"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/textViewmeaningItem"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewmeaningItem"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@{word.meaning}"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textViewWorditem"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/view"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="5dp"
-            android:background="#c0c0c0"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewmeaningItem" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/wordbg"
+            android:padding="5dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textViewWorditem"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{word.wordTitle}"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/textViewmeaningItem"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/textViewmeaningItem"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{word.meaning}"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textViewWorditem"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 </layout>

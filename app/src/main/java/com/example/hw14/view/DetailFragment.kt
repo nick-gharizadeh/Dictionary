@@ -96,9 +96,10 @@ class DetailFragment : Fragment() {
                 prepare()
                 start()
             } catch (e: IOException) {
-                Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "You don't record voice for this word", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 
     private fun stopPlaying() {

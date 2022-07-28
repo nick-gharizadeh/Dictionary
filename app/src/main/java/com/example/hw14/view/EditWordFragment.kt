@@ -1,6 +1,7 @@
 package com.example.hw14.view
 
 import android.os.Bundle
+import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -89,8 +90,16 @@ class EditWordFragment : Fragment() {
             binding.editTextTextsynonym.error = "please fill synonym "
             return false
         }
+
         if (binding.editTextTextURL.editText?.text.toString().isBlank()) {
-            binding.editTextTextURL.error = "please fill URL "
+            val word = binding.editTextTextWordTitle.editText?.text.toString().trim()
+            binding.editTextTextURL.editText?.setText("https://en.wikipedia.org/wiki/$word")
+            return false
+        }
+
+        // validate URL
+        if (!Patterns.WEB_URL.matcher(binding.editTextTextURL.editText?.text.toString()).matches()) {
+            binding.editTextTextURL.error = "please fill this field with a valid URL "
             return false
         }
 

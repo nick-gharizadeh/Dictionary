@@ -22,7 +22,7 @@ interface WordDao {
     @Query("SELECT * from word ORDER BY wordTitle ASC")
     fun getAllWords(): LiveData<List<Word?>?>?
 
-    @Query("SELECT * FROM word WHERE wordTitle=(:word) LIMIT 1")
+    @Query("SELECT * FROM word WHERE wordTitle=(:word)OR meaning=(:word) LIMIT 1")
     fun findWord(word: String?): Word?
 
     @Query("SELECT COUNT(*) from word")

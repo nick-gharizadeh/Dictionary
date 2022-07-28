@@ -39,7 +39,17 @@ class WebViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.webView.webViewClient= WebViewClient()
         binding.webView.apply {
-            wordViewModel.selectedWord?.let { loadUrl(it.URL) }
+            var prefix1="https://"
+            var prefix2="http://"
+            wordViewModel.selectedWord?.let {
+                if (it.URL.contains(prefix1) or it.URL.contains(prefix2))
+                loadUrl(it.URL)
+            else
+                {
+                   val validURL = prefix1 + it.URL
+                    loadUrl(validURL)
+                }
+            }
             settings.javaScriptEnabled=true
         }
     }
